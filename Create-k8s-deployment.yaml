@@ -1,0 +1,29 @@
+#Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-deploy
+  labels:
+    app: login-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: login-app
+  strategy:
+     type: RollingUpdate
+     rollingUpdate:
+         maxSurge: 1
+         maxUnavailable: 1  
+  
+  template:
+    metadata:
+      labels:
+        app: login-app
+    spec:
+      containers:
+      - name: login-container
+        image: saikumar080319/jfrog:tagVersion
+        imagePullPolicy : Always
+        ports:
+        - containerPort: 8080
