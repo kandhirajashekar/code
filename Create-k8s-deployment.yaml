@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: login-container
-        image: saikumar080319/jfrog:tagVersion
+        image: saikumar080319/OCT:tagVersion
         imagePullPolicy : Always
         ports:
         - containerPort: 8080

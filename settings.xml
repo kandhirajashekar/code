@@ -22,13 +22,13 @@
           </snapshots>
           <id>central</id>
           <name>java-libs-release</name>
-          <url>http://3.101.134.113:8082/artifactory/java-libs-release</url>
+          <url>http://3.90.11.150:8082/artifactory/java-libs-release</url>
         </repository>
         <repository>
           <snapshots />
           <id>snapshots</id>
           <name>java-libs-snapshot</name>
-          <url>http://3.101.134.113:8082/artifactory/java-libs-snapshot</url>
+          <url>http://3.90.11.150:8082/artifactory/java-libs-snapshot</url>
         </repository>
       </repositories>
       <pluginRepositories>
@@ -38,13 +38,13 @@
           </snapshots>
           <id>central</id>
           <name>java-libs-release</name>
-          <url>http://3.101.134.113:8082/artifactory/java-libs-release</url>
+          <url>http://3.90.11.150:8082/artifactory/java-libs-release</url>
         </pluginRepository>
         <pluginRepository>
           <snapshots />
           <id>snapshots</id>
           <name>java-libs-snapshot</name>
-          <url>http://3.101.134.113:8082/artifactory/java-libs-snapshot</url>
+          <url>http://3.90.11.150:8082/artifactory/java-libs-snapshot</url>
         </pluginRepository>
       </pluginRepositories>
       <id>artifactory</id>

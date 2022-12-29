@@ -67,12 +67,12 @@
 			</plugin>
 		</plugins>
 	</build>
-    <distributionManagement>
+	<distributionManagement>
     <repository>
         <id>central</id>
-        <name>Jfrog-releases</name>
-        <url>http://3.101.134.113:8082/artifactory/java-libs-release</url>
+        <name>jfrog-releases</name>
+        <url>http://3.90.11.150:8082/artifactory/java-libs-release</url>
     </repository>
 </distributionManagement>
-
+ 
 </project>
