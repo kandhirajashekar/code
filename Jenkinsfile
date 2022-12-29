@@ -9,7 +9,7 @@ pipeline {
 
       stage ('Checkout SCM'){
         steps {
-          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git_cred', url: 'https://saidevopstraining-admin@bitbucket.org/saidevopstraining/jenkins-pipeline.git']]])
+          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialId: 'git_cred', url: 'https://saidevopstraining-admin@bitbucket.org/saidevopstraining/jenkins-pipeline.git']]])
         }
       }
 	  
