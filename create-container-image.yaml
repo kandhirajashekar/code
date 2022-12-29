@@ -4,7 +4,7 @@
   - name: Pull .war artifact from Artifactory
     become: true
     get_url:
-      url: http://3.90.11.150:8082/artifactory/java-libs-release/com/DEMO/DEMOApp/2.0-RELEASE/DEMOApp-2.0-RELEASE.war
+      url: http://18.207.217.162:8082/artifactory/java-libs-release/com/DEMO/DEMOApp/2.0-RELEASE/DEMOApp-2.0-RELEASE.war
       dest: /home/ec2-user
       url_username: admin
       url_password: Admin@123
