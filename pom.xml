@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.DEMO</groupId>
 	<artifactId>DEMOApp</artifactId>
-	<version>2.0-RELEASE</version>
+	<version>3.0-RELEASE</version>
 	<packaging>war</packaging>
 	<name>DEMOApp</name>
 	<description> DevOps project for Spring Boot</description>
@@ -70,8 +70,8 @@
 	<distributionManagement>
     <repository>
         <id>central</id>
-        <name>ip-10-1-1-193-releases</name>
-        <url>http://18.207.217.162:8082/artifactory/java-libs-release</url>
+        <name>ip-172-31-38-194.ap-southeast-1.compute.internal-releases</name>
+        <url>http://54.254.57.11:8082/artifactory/june-libs-release</url>
     </repository>
 </distributionManagement>
  
