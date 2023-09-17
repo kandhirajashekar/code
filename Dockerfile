@@ -6,5 +6,5 @@ FROM tomcat:9
 MAINTAINER "Sai"
 
 # copy war file on to container 
-COPY ./demo.war /usr/local/tomcat/webapps
+COPY ./DEMOApp-3.0-RELEASE.war /usr/local/tomcat/webapps
 
