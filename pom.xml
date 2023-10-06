@@ -70,8 +70,8 @@
 	<distributionManagement>
     <repository>
         <id>central</id>
-        <name>ip-172-31-38-194.ap-southeast-1.compute.internal-releases</name>
-        <url>http://54.254.57.11:8082/artifactory/june-libs-release</url>
+        <name>ip-172-31-18-166-releases</name>
+        <url>http://54.169.56.54:8082/artifactory/java-libs-release</url>
     </repository>
 </distributionManagement>
  

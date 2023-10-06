@@ -9,7 +9,7 @@ pipeline {
 
       stage ('Checkout SCM'){
         steps {
-          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialId: 'git_cred', url: 'https://saidevopstraining-admin@bitbucket.org/saidevopstraining/jenkins-pipeline.git']]])
+          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialId: 'git', url: 'https://saidevopstraining-admin@bitbucket.org/saidevopstraining/jenkins-pipeline.git']]])
         }
       }
 	  
@@ -44,10 +44,10 @@ pipeline {
     stage('Copy Dockerfile & Playbook to Ansible Server') {
             
             steps {
-                  sshagent(['ssh_cred']) {
+                  sshagent(['ssh']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@10.1.1.123:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@10.1.1.123:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@172.31.10.95:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@172.31.10.95:/home/ec2-user"
                     }
                 }
             
@@ -55,10 +55,10 @@ pipeline {
     stage('Build Container Image') {
             
             steps {
-                  sshagent(['ssh_cred']) {
+                  sshagent(['ssh']) {
                         echo "${env.BUILD_NUMBER}"
                               println "${env.BUILD_NUMBER}"
-                              sh "ssh -o StrictHostKeyChecking=no ec2-user@10.1.1.123 -C \"sudo ansible-playbook create-container-image.yaml -e Build_Number=${env.BUILD_NUMBER}\""
+                              sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.10.95 -C \"sudo ansible-playbook create-container-image.yaml -e Build_Number=${env.BUILD_NUMBER}\""
                         
                     }
                 }
@@ -69,10 +69,10 @@ pipeline {
             steps {
                   sh "chmod +x ChangeTag.sh"
                   sh "./ChangeTag.sh ${env.BUILD_NUMBER}"
-                  sshagent(['ssh_cred']) {
+                  sshagent(['ssh']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no K8s-deployement.yaml ubuntu@10.1.1.219:/home/ubuntu"
-                        sh "scp -o StrictHostKeyChecking=no nodeport.yaml ubuntu@10.1.1.219:/home/ubuntu"
+                        sh "scp -o StrictHostKeyChecking=no K8s-deployement.yaml ubuntu@172.31.16.115:/home/ubuntu"
+                        sh "scp -o StrictHostKeyChecking=no nodeport.yaml ubuntu@172.31.16.115:/home/ubuntu"
                     }
                 }
             
@@ -89,12 +89,12 @@ pipeline {
     stage('Deploy Production') {
             
             steps {
-                  sshagent(['ssh_cred']) {
+                  sshagent(['ssh']) {
                        script{
                           try{
-                               sh "ssh -o StrictHostKeyChecking=no ubuntu@10.1.1.219 -C \"sudo kubectl apply -f . --validate=false\""
+                               sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.16.115 -C \"sudo kubectl apply -f . --validate=false\""
                           }catch(error){
-                               sh "ssh -o StrictHostKeyChecking=no ubuntu@10.1.1.219 -C \"sudo kubectl create -f . --validate=false\""
+                               sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.16.115 -C \"sudo kubectl create -f . --validate=false\""
                         
                     }
                 }
