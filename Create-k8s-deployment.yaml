@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: login-container
-        image: saikumar080319/Novem:tagVersion
+        image: saikumar080319/novem:tagVersion
         imagePullPolicy : Always
         ports:
         - containerPort: 8080
