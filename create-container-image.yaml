@@ -10,7 +10,7 @@
       url_password: Admin@123
 
   - name: Rename .war Artifact
-    command: mv DEMOApp-2.0-RELEASE.war demo.war
+    command: mv DEMOApp-3.0-RELEASE.war demo.war
      
   - name: Pull Tomcat  Container Image
     docker_image:
