@@ -15,7 +15,7 @@ spec:
      rollingUpdate:
          maxSurge: 1
          maxUnavailable: 1  
-  
+
   template:
     metadata:
       labels:
@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: login-container
-        image: saikumar080319/novem:tagVersion
+        image: saikumar080319/november:tagVersion
         imagePullPolicy : Always
         ports:
         - containerPort: 8080

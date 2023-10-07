@@ -36,6 +36,6 @@
   - name: Push to docker hub
     docker_image:
       name: demo
-      repository: saikumar080319/novem:{{ Build_Number }}
+      repository: saikumar080319/november:{{ Build_Number }}
       push: yes
       source: local

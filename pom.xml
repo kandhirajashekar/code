@@ -70,8 +70,8 @@
 	<distributionManagement>
     <repository>
         <id>central</id>
-        <name>ip-172-31-18-166-releases</name>
-        <url>http://54.169.56.54:8082/artifactory/java-libs-release</url>
+        <name>Jfrog-releases</name>
+        <url>http://18.136.119.33:8082/artifactory/java-libs-release</url>
     </repository>
 </distributionManagement>
  

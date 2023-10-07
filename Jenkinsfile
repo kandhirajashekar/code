@@ -46,8 +46,8 @@ pipeline {
             steps {
                   sshagent(['ssh']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@172.31.10.95:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@172.31.10.95:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@172.31.39.153:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@172.31.39.153:/home/ec2-user"
                     }
                 }
             
@@ -58,7 +58,7 @@ pipeline {
                   sshagent(['ssh']) {
                         echo "${env.BUILD_NUMBER}"
                               println "${env.BUILD_NUMBER}"
-                              sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.10.95 -C \"sudo ansible-playbook create-container-image.yaml -e Build_Number=${env.BUILD_NUMBER}\""
+                              sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.39.153 -C \"sudo ansible-playbook create-container-image.yaml -e Build_Number=${env.BUILD_NUMBER}\""
                         
                     }
                 }
@@ -71,8 +71,8 @@ pipeline {
                   sh "./ChangeTag.sh ${env.BUILD_NUMBER}"
                   sshagent(['ssh']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no K8s-deployement.yaml ubuntu@172.31.16.115:/home/ubuntu"
-                        sh "scp -o StrictHostKeyChecking=no nodeport.yaml ubuntu@172.31.16.115:/home/ubuntu"
+                        sh "scp -o StrictHostKeyChecking=no K8s-deployement.yaml ubuntu@172.31.20.192:/home/ubuntu"
+                        sh "scp -o StrictHostKeyChecking=no nodeport.yaml ubuntu@172.31.20.192:/home/ubuntu"
                     }
                 }
             
@@ -92,9 +92,9 @@ pipeline {
                   sshagent(['ssh']) {
                        script{
                           try{
-                               sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.16.115 -C \"sudo kubectl apply -f . --validate=false\""
+                               sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.20.192 -C \"sudo kubectl apply -f . --validate=false\""
                           }catch(error){
-                               sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.16.115 -C \"sudo kubectl create -f . --validate=false\""
+                               sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.20.192 -C \"sudo kubectl create -f . --validate=false\""
                         
                     }
                 }
